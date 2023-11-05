@@ -1,0 +1,2 @@
+git+https://github.com/kamalojasv181/efficiency.git
+torch==2.1.0
