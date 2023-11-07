@@ -40,12 +40,14 @@ class _Config:
 
 
 class Config:
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: str, create_parser: bool = False) -> None:
         self.path = path
         self._load_yaml()
-        self._create_parser()
-        self._add_parser_args()
-        self._parse_args()
+
+        if create_parser:
+            self._create_parser()
+            self._add_parser_args()
+            self._parse_args()
 
     def update(self, args: dict) -> None:
         self.config._update(args)

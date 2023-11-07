@@ -25,13 +25,13 @@ class GPT(torch.nn.Module):
 
         self.wte = torch.nn.Embedding(config.vocab_size, config.n_embd)
         self.wpe = torch.nn.Embedding(config.context_length, config.n_embd)
-        drop = torch.nn.Dropout(config.dropout)
+        self.drop = torch.nn.Dropout(config.dropout)
         self.blocks = torch.nn.ModuleList([Block(config) for _ in range(config.n_layer)])
         self.ln_f = torch.nn.LayerNorm(config.n_embd, eps=config.layer_norm_epsilon)
 
         self.lm_head = torch.nn.Linear(config.n_embd, config.vocab_size, bias=False)
 
-    def forward(self, ids, targets):
+    def forward(self, ids, targets=None):
 
         b, t = ids.size()
         token_embeddings = self.wte(ids)
