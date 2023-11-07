@@ -1,6 +1,8 @@
-n_embed: 256
+n_embd: 256
 n_head: 8
 n_layer: 6
 dropout: 0.2
 context_size: 8
 bias: true
+layer_norm_epsilon: 0.00001
+vocab_size: 50257
